@@ -1,0 +1,129 @@
+:root {
+  --body-bg: #14151c;
+  --calc-body: #2b2d3a;
+  --calc-body-edge: #363849;
+  --display-bg: #c9d6c1;
+  --display-text: #1f2a1a;
+  --key-bg: #3f4254;
+  --key-text: #edecf2;
+  --key-hover: #4a4d63;
+  --op-bg: #e8823c;
+  --op-text: #241002;
+  --fn-bg: #6b6e85;
+  --fn-text: #1c1d24;
+  --eq-bg: #5fa8d3;
+  --eq-text: #071620;
+  --shadow-deep: rgba(0, 0, 0, 0.45);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--body-bg);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  padding: 24px;
+}
+
+.calc {
+  width: 320px;
+  background: linear-gradient(160deg, var(--calc-body-edge), var(--calc-body));
+  border-radius: 22px;
+  padding: 18px;
+  box-shadow:
+    0 30px 60px var(--shadow-deep),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.calc__display {
+  background: var(--display-bg);
+  border-radius: 12px;
+  padding: 20px 18px 16px;
+  margin-bottom: 16px;
+  text-align: right;
+  box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.25);
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 4px;
+}
+
+.calc__expression {
+  font-family: "Courier New", monospace;
+  font-size: 0.9rem;
+  color: var(--display-text);
+  opacity: 0.55;
+  min-height: 1.1em;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.calc__result {
+  font-family: "Courier New", monospace;
+  font-size: 2.1rem;
+  font-weight: 700;
+  color: var(--display-text);
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.calc__keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  border: none;
+  border-radius: 12px;
+  padding: 18px 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  background: var(--key-bg);
+  color: var(--key-text);
+  cursor: pointer;
+  box-shadow: 0 3px 0 rgba(0, 0, 0, 0.35);
+  transition: transform 0.06s ease, box-shadow 0.06s ease, background 0.15s ease;
+}
+
+.key:hover {
+  background: var(--key-hover);
+}
+
+.key:active,
+.key.is-pressed {
+  transform: translateY(3px);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.35);
+}
+
+.key--fn {
+  background: var(--fn-bg);
+  color: var(--fn-text);
+}
+
+.key--op {
+  background: var(--op-bg);
+  color: var(--op-text);
+}
+
+.key--eq {
+  background: var(--eq-bg);
+  color: var(--eq-text);
+}
+
+.key--zero {
+  grid-column: span 2;
+}
+
+@media (max-width: 360px) {
+  .calc {
+    width: 100%;
+  }
+}
